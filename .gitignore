@@ -1,0 +1,6 @@
+cookies.json
+cookies_*.json
+node_modules/
+last_block.txt
+last.txt
+.local-chromium/

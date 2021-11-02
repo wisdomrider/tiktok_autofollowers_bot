@@ -1,0 +1,24 @@
+{
+  "name": "tiktok_autofollow_bot",
+  "version": "1.1.2",
+  "description": "This bot allows you to follow random peoples from the stream.",
+  "main": "index.js",
+  "bin": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wisdomrider/tiktok_autofollowers_bot"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "prompts": "^2.4.2",
+    "puppeteer": "^10.4.0",
+    "puppeteer-extra": "^3.2.3",
+    "puppeteer-extra-plugin-stealth": "^2.9.0"
+  }
+}
