@@ -15,6 +15,7 @@ const print = (data) => console.log(data)
 let third;
 try { third = process.argv[2] } catch (e) { third = null }
 const headLess = process.argv.join(' ').includes('-HL');
+let args=[];
 if (cookieExists) {
     cookies = fs.readFileSync('./cookies.json', 'utf8');
     cookies = JSON.parse(cookies);
@@ -22,15 +23,18 @@ if (cookieExists) {
     const line = "------------------------";
     print(chalk.bold.green(line + '\n[*] Bot by @wisdomrider\n' + line))
     print(chalk.redBright("[!] I will not be responsible if anything happens to your account or you do anything using this bot.\n[!] This bot is made for only educational purpose.\n[!] After following 100-300 accounts tiktok blocks you then wait for 1-3 hr and try again.\n[!] To change streamer's username change the last.txt file\n[!] Time when you were blocked is saved in last_block.txt\n" + line))
-    print(chalk.yellowBright(`[!] Other options\n[~] use --unfollow to unfollow users who have not followed you.\n[~] use --unfollow_1 if first doesnot work for you.\n[~] use --logout to logout\n[~] use --surf to surf\n[~] use -HL for headless\n${line}`))
+    print(chalk.yellowBright(`[!] Other options\n[~] use --unfollow to unfollow users who have not followed you.\n[~] use --unfollow_all To unfollow everyone.\n[~] use --logout to logout\n[~] use --surf to surf\n[~] use -HL for headless\n${line}`))
     print(chalk.bold.greenBright(line + '\n[*] If you find this bot helpful then buy me a cup of coffee from here\nhttps://www.paypal.com/donate?hosted_button_id=6NL4SUDP5C9BY\n' + line))
     print(chalk.yellow("[=] Cookies loaded.\n"))
+    args.push('--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/14A403 Safari/602.1');
 }
 else {
     print(chalk.bold.red("[x] Cookies not found. Login to your tiktok account then press y to proceed."))
 }
 
-puppeteer.launch({ headless: headLess }).then(async browser => {
+
+
+puppeteer.launch({ headless: headLess,args }).then(async browser => {
     const page = await browser.newPage()
     if (!cookieExists) {
         await page.goto("https://www.tiktok.com")

@@ -33,15 +33,11 @@ module.exports = async (page, print) => {
         for (let i = 0; i < users.length; i++) {
             let buttonText = await page.evaluate((el) => el.querySelector("button").innerText, users[i]);
             let username = await page.evaluate((el) => el.querySelector("[data-e2e=suggest-user-subtitle]").innerText, users[i]);
-            if (!["Friends"].includes(buttonText)) {
+            if (["Following", "Friends"].includes(buttonText)) {
                 await page.evaluate((el) => el.querySelector("button").click(), users[i]);
                 print(chalk.red(`[-] Unfollowed ${chalk.bold(username)}`))
                 await page.waitForTimeout(600)
             }
-            else {
-                print(chalk.red(`[-] Skipped ${chalk.bold(username)}`))
-            }
-
             print(chalk.yellow(`Remaining users: ${following - users.length - i - 1}`))
         }
 
